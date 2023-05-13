@@ -1,6 +1,17 @@
 import { observe } from "./observe";
 import { proxyData } from "./proxy";
 
+export function initMixin(Vue) {
+    Vue.prototype._init = init;
+}
+
+function init(options) {
+    var vm = this;
+    vm.$options = options;
+
+    initState(vm);
+}
+
 export function initState(vm) {
     var options = vm.$options;
 
