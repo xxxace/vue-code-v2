@@ -1,6 +1,7 @@
 import { observe } from "./obeserver";
 import { proxyData } from "./state.js";
 import { compileToRenderFunction } from "./compiler";
+import { mountComponent } from './lifecycle';
 
 export function initMixin(Vue) {
     Vue.prototype._init = init;
@@ -36,6 +37,7 @@ function $mount(el) {
         options.render = render;
     }
 
+    mountComponent(vm);
 }
 
 export function initState(vm) {
